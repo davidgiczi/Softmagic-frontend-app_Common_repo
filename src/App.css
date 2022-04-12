@@ -4,7 +4,8 @@
 
 body {
   background-color: #729fcf;
-  background-image: radial-gradient(#b0c4dd 1px,transparent 2px), radial-gradient(#b0c4dd 1px,transparent 2px);
+  background-image: radial-gradient(#b0c4dd 1px, transparent 2px),
+    radial-gradient(#b0c4dd 1px, transparent 2px);
   background-repeat: repeat;
   background-size: 80px 80px;
   background-position: 0 0, 40px 20px;
@@ -40,27 +41,27 @@ li {
   width: 100%;
 }
 
- .Send-btn {
-   padding: 8px;
-   border-radius: 8px;
-   cursor: pointer;
- }
+.Send-btn {
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
- .Selection-field{
-   min-width: 50%;
-   padding: 5px;
-   border-radius: 3px;
-   cursor: pointer;
- }
+.Selection-field {
+  min-width: 50%;
+  padding: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
 
 .App-header {
   position: fixed;
   width: 100%;
-  border-radius: 0  0 32% 32%;
+  border-radius: 0 0 32% 32%;
   border-bottom: 4px solid #3567a4;
 }
 
-.Choose-file{
+.Choose-file {
   width: fit-content;
   margin: 20px;
   padding: 5px;
@@ -69,5 +70,4 @@ li {
 }
 
 @media screen and (hover: none) {
-  
 }
