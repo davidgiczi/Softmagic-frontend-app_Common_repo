@@ -1,0 +1,3 @@
+fájlméretek Mb-ban
+choose files appendáljon talán
+class nevek kisbetűsök legyenek (nem néztem, lehet, hogy React ajánlás a nagybetű)
