@@ -15,6 +15,7 @@ function FileUploadPage() {
   const [clientNames, setClientNames] = useState([]);
 
   useEffect(() => {
+    return; // delete this line
     let inputData = prompt("Adja meg a jelszót:");
     if (inputData !== null) {
       const formData = new FormData();
