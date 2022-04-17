@@ -1,3 +1,9 @@
+
+@font-face {
+  font-family: SoftMagicFont;
+  src: url(./font/AlgerianRegular.ttf);
+}
+
 * {
   box-sizing: border-box;
   user-select: none;
@@ -32,7 +38,7 @@ body {
   position: sticky;
   top: 0;
   width: 100%;
-  height: 80px;
+  height: 100px;
   background-color: #e6f1ff;
   border-radius: 0 0 32% 32%;
   border-bottom: 4px solid #3567a4;
@@ -83,6 +89,53 @@ li {
   cursor: pointer;
 }
 
+.Soft-magic{
+  position: absolute;
+  top: 80px;
+  font-size: 50px;
+  color: whitesmoke;
+  font-family:  SoftMagicFont;
+  padding: 20px;
+}
+img{
+margin-left: 10px;
+margin-right: 10px;
+}
+.Link-row{
+  font-size: 20px;
+  color: #000080;
+  user-select: text;
+}
+.Link-group{
+  margin-top: 50px;
+  height: 500px;
+}
+.Doc-row{
+  font-size: 20px;
+  color: #000080;
+  cursor: pointer;
+  text-align: center;
+  user-select: text;
+}
+.Doc-group{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  height: 500px;
+}
+.Header-text{
+  text-align: center;
+  user-select: text;
+}
+.Icon{
+height: 20px;
+width: 20px;
+}
+.Space{
+  height: 50px;
+}
 @media screen and (hover: none) {
 #root {
   flex-direction: column-reverse;

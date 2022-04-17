@@ -15,12 +15,11 @@ function FileUploadPage() {
   const [clientNames, setClientNames] = useState([]);
 
   useEffect(() => {
-    return; // delete this line
     let inputData = prompt("Adja meg a jelszót:");
     if (inputData !== null) {
       const formData = new FormData();
       formData.append("identifier", inputData);
-      fetch("http://localhost:2022/softmagic/getPermission", {
+      fetch("https://backend.softmagic.hu/softmagic/getPermission", {
         method: "POST",
         cache: "no-cache",
         body: formData,
@@ -35,13 +34,13 @@ function FileUploadPage() {
 
   const isValid = (permission) => {
     if (permission === "true") {
-      fetch("http://localhost:2022/softmagic/foldernames", {
+      fetch("https://backend.softmagic.hu/softmagic/foldernames", {
         method: "GET",
         cache: "no-cache",
       })
         .then((response) => response.json())
         .then((folderNames) => setFolderNames(folderNames));
-      fetch("http://localhost:2022/softmagic/clients", {
+      fetch("https://backend.softmagic.hu/softmagic/clients", {
         method: "GET",
         cache: "no-cache",
       })
@@ -211,10 +210,10 @@ function UploadAbleFileInfo(props) {
 }
 
 async function sendFiles(fileList) {
-  await fetch("http://localhost:2022/softmagic/upload", {
+  await fetch("https://backend.softmagic.hu/softmagic/upload", {
     method: "POST",
     body: fileList,
-    cache: "no-cache",
+    cache: "no-cache"
   })
     .then((response) => response.text())
     .then((text) => {
