@@ -12,7 +12,10 @@ const[links, setLinks] = useState([]);
          cache: "no-cache",
        })
        .then(response => response.json())
-       .then(data =>  setLinks(data));
+       .then(data =>setLinks(data))
+       .catch((error) => {
+        alert("Linkek betöltése sikertelen.");
+      });
      }, [])
 
 return (<div className="Link-group"><br/>

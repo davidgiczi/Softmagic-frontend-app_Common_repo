@@ -10,12 +10,15 @@ import { useState, useEffect } from "react";
         cache: "no-cache",
       })
       .then(response => response.json())
-      .then(data =>  setDocs(data));
+      .then(data =>  setDocs(data))
+      .catch((error) => {
+      alert("Dokumentumok betöltése sikertelen.");
+      });
     }, [])
 
     const download = (id, docName) => {
 
-       if(window.confirm("Bizos, hogy letölti a dokumentumot?")){
+       if(window.confirm("Bizos, hogy letölti a(z) \"" + docName +"\" nevű dokumentumot?")){
         
        fetch("https://backend.softmagic.hu/softmagic/doc?docId=" + id, {
         method: "GET",
@@ -23,6 +26,10 @@ import { useState, useEffect } from "react";
       })
       .then(response => response.blob())
       .then(doc => { 
+        if(doc.size === 0){
+          alert("\"" + docName + "\" nevű fájl nem található.");
+          return;
+        }
         const link = document.createElement('a');
         link.href = URL.createObjectURL(doc);
         link.download = docName;
