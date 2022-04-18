@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
     fetch("https://backend.softmagic.hu/softmagic/docs", {
         method: "GET",
-        cache: "no-cache",
+        cache: "no-cache"
       })
       .then(response => response.json())
       .then(data =>  setDocs(data))
@@ -22,7 +22,7 @@ import { useState, useEffect } from "react";
         
        fetch("https://backend.softmagic.hu/softmagic/doc?docId=" + id, {
         method: "GET",
-        cache: "no-cache",
+        cache: "no-cache"
       })
       .then(response => response.blob())
       .then(doc => { 

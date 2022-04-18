@@ -19,7 +19,7 @@ const[links, setLinks] = useState([]);
      }, [])
 
 return (<div className="Link-group"><br/>
-{links.map((link) =><p><Link href={link.href} target="_blank"><font  className="Link-row">{link.title}</font></Link></p>)}
+{links.map((link) =><p key={link.id}><Link href={link.href} target="_blank"><font  className="Link-row">{link.title}</font></Link></p>)}
 </div>
 )
 }
