@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
+
 const MAX_SIZE = 5 * 1024 * 1024;
 let foldername = "-";
 let clientName = "-";
@@ -15,6 +17,23 @@ function FileUploadPage() {
   const [clientNames, setClientNames] = useState([]);
 
   useEffect(() => {
+
+    if(Cookies.get('isVerified')){
+      fetch("https://backend.softmagic.hu/softmagic/foldernames", {
+      method: "GET",
+      cache: "no-cache",
+    })
+      .then((response) => response.json())
+      .then((folderNames) => setFolderNames(folderNames));
+    fetch("https://backend.softmagic.hu/softmagic/clients", {
+      method: "GET",
+      cache: "no-cache",
+    })
+      .then((response) => response.json())
+      .then((clientNames) => setClientNames(clientNames));
+      return;
+    }
+
     let inputData = prompt("Adja meg a jelszót:");
     if (inputData !== null) {
       const formData = new FormData();
@@ -26,26 +45,31 @@ function FileUploadPage() {
       })
         .then((response) => response.text())
         .then((permission) => isValid(permission));
-    } else {
+    } else if(inputData === null){
       window.location.href = window.origin;
       return;
     }
   }, []);
 
   const isValid = (permission) => {
+
     if (permission === "true") {
+      createCookie();
+      
       fetch("https://backend.softmagic.hu/softmagic/foldernames", {
-        method: "GET",
-        cache: "no-cache",
-      })
-        .then((response) => response.json())
-        .then((folderNames) => setFolderNames(folderNames));
-      fetch("https://backend.softmagic.hu/softmagic/clients", {
-        method: "GET",
-        cache: "no-cache",
-      })
-        .then((response) => response.json())
-        .then((clientNames) => setClientNames(clientNames));
+      method: "GET",
+      cache: "no-cache",
+    })
+      .then((response) => response.json())
+      .then((folderNames) => setFolderNames(folderNames));
+    fetch("https://backend.softmagic.hu/softmagic/clients", {
+      method: "GET",
+      cache: "no-cache",
+    })
+      .then((response) => response.json())
+      .then((clientNames) => setClientNames(clientNames));
+
+
     } else {
       alert("Helytelen jelszó!");
       window.location.reload();
@@ -131,7 +155,7 @@ function FileUploadPage() {
         className="Choose-file"
         type="file"
         name="file"
-        accept=".txt, .pdf, .doc, .xls, .xlsx, .jpg"
+        accept=".txt, .pdf, .doc, .docx, .xls, .xlsx, .jpg, .JPG"
         onChange={changeHandler}
         multiple
       ></input>
@@ -146,6 +170,14 @@ function FileUploadPage() {
       </div>
     </div>
   );
+}
+
+function createCookie(){
+      let now = new Date();
+      let time = now.getTime();
+      let expireTime = time + 5 * 60 * 1000;
+      now.setTime(expireTime);
+      document.cookie = 'isVerified=true;expires=' + now.toUTCString() + ';path=/';
 }
 
 function InfoText(props) {
@@ -222,7 +254,7 @@ async function sendFiles(fileList) {
     .catch((error) => {
       alert("Fájlok küldése sikertelen.");
     });
-  window.location.reload();
+    window.location.reload();
 }
 
 export default FileUploadPage;

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Link from "@material-ui/core/Link";
 
-
 const Links = () => {
 const[links, setLinks] = useState([]);
 
