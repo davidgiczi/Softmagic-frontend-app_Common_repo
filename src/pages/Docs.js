@@ -47,4 +47,5 @@ import { Home } from "../Uploadfile";
     </div></>);
  } 
 
+
 export default Docs;

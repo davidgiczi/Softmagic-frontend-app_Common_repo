@@ -139,6 +139,7 @@ width: 20px;
 .Go-home{
   color:  #000080;
   cursor: pointer;
+  z-index: 1;
 }
 @media screen and (hover: none) {
 #root {

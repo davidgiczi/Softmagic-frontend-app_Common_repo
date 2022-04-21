@@ -176,7 +176,7 @@ function Home(){
 }
 
 function goHome(){
-  window.location.href = '/';
+  document.location.href = '/';
   }
 
 function createCookie(){
