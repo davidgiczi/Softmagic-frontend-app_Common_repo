@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Home } from "../Uploadfile";
 
  function Docs(){
    const[docs, setDocs] = useState([]);
@@ -38,10 +39,12 @@ import { useState, useEffect } from "react";
         link.remove();
       })
       }}
-    return (<div className="Doc-group">
+    return (<>
+    <Home/>
+    <div className="Doc-group">
     {docs.map((doc) =><p key={doc.id} 
     onClick={() => download(doc.id, doc.title + '.' + doc.extension)} className="Doc-row">{doc.title + '.'}<b>{doc.extension}</b></p>)}
-    </div>);
+    </div></>);
  } 
 
 export default Docs;

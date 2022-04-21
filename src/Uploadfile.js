@@ -19,18 +19,19 @@ function FileUploadPage() {
   useEffect(() => {
 
     if(Cookies.get('isVerified')){
+     
       fetch("https://backend.softmagic.hu/softmagic/foldernames", {
-      method: "GET",
-      cache: "no-cache",
-    })
-      .then((response) => response.json())
-      .then((folderNames) => setFolderNames(folderNames));
-    fetch("https://backend.softmagic.hu/softmagic/clients", {
-      method: "GET",
-      cache: "no-cache",
-    })
-      .then((response) => response.json())
-      .then((clientNames) => setClientNames(clientNames));
+        method: "GET",
+        cache: "no-cache",
+      })
+        .then((response) => response.json())
+        .then((folderNames) => setFolderNames(folderNames));
+      fetch("https://backend.softmagic.hu/softmagic/clients", {
+        method: "GET",
+        cache: "no-cache",
+      })
+        .then((response) => response.json())
+        .then((clientNames) => setClientNames(clientNames));
       return;
     }
 
@@ -55,21 +56,18 @@ function FileUploadPage() {
 
     if (permission === "true") {
       createCookie();
-      
       fetch("https://backend.softmagic.hu/softmagic/foldernames", {
-      method: "GET",
-      cache: "no-cache",
-    })
-      .then((response) => response.json())
-      .then((folderNames) => setFolderNames(folderNames));
-    fetch("https://backend.softmagic.hu/softmagic/clients", {
-      method: "GET",
-      cache: "no-cache",
-    })
-      .then((response) => response.json())
-      .then((clientNames) => setClientNames(clientNames));
-
-
+        method: "GET",
+        cache: "no-cache",
+      })
+        .then((response) => response.json())
+        .then((folderNames) => setFolderNames(folderNames));
+      fetch("https://backend.softmagic.hu/softmagic/clients", {
+        method: "GET",
+        cache: "no-cache",
+      })
+        .then((response) => response.json())
+        .then((clientNames) => setClientNames(clientNames));
     } else {
       alert("Helytelen jelszó!");
       window.location.reload();
@@ -168,9 +166,18 @@ function FileUploadPage() {
           Küldés
         </button>
       </div>
+      <Home/>
     </div>
   );
 }
+
+function Home(){
+  return(<p onClick={goHome} className='Go-home'>Kezdőoldalra</p>);
+}
+
+function goHome(){
+  window.location.href = '/';
+  }
 
 function createCookie(){
       let now = new Date();
@@ -257,4 +264,5 @@ async function sendFiles(fileList) {
     window.location.reload();
 }
 
+export {Home};
 export default FileUploadPage;

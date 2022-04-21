@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Link from "@material-ui/core/Link";
+import { Home } from "../Uploadfile";
 
 const Links = () => {
 const[links, setLinks] = useState([]);
@@ -17,9 +18,11 @@ const[links, setLinks] = useState([]);
       });
      }, [])
 
-return (<div className="Link-group"><br/>
+return (<>
+<Home/>
+<div className="Link-group"><br/>
 {links.map((link) =><p key={link.id}><Link href={link.href} target="_blank"><font  className="Link-row">{link.title}</font></Link></p>)}
-</div>
+</div></>
 )
 }
 

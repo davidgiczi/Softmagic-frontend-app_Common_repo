@@ -91,7 +91,7 @@ li {
 
 .Soft-magic{
   position: absolute;
-  top: 80px;
+  top: 70px;
   font-size: 50px;
   color: whitesmoke;
   font-family:  SoftMagicFont;
@@ -135,6 +135,10 @@ width: 20px;
 }
 .Space{
   height: 50px;
+}
+.Go-home{
+  color:  #000080;
+  cursor: pointer;
 }
 @media screen and (hover: none) {
 #root {
