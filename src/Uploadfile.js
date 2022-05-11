@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
-const MAX_SIZE = 5 * 1024 * 1024;
+const MAX_SIZE = 10 * 1024 * 1024;
 let foldername = "-";
 let clientName = "-";
 
@@ -228,15 +228,15 @@ function leftFileSize(files) {
   const store = [...files];
   let sum = 0;
   store.map((file) => (sum += parseInt(file.size)));
-  const deltaByte = MAX_SIZE - sum;
-  return deltaByte;
+  const deltaByte = (MAX_SIZE - sum) / (1024 * 1024);
+  return deltaByte.toFixed(1);
 }
 
 function UploadAbleFileInfo(props) {
   let infoText;
   let deltaByte = leftFileSize(props.files);
   if (deltaByte >= 0) {
-    infoText = "Még feltölthető " + deltaByte + " byte.";
+    infoText = "Még feltölthető " + deltaByte + " Mbyte.";
   } else {
     infoText =
       "A dokumentumok nem küldhetők el, mivel egyszerre 5MB adat tölthető fel.";
